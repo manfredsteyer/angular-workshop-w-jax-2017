@@ -28,7 +28,15 @@
   </div>
 </div>
 
-
+<div class="row">
+<div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <flight-card
+    [item]="f"
+    [(selected)]="basket[f.id]">
+  </flight-card>
+</div>
+</div>
+<!--
 <div class="card">
 
   <table class="table table-contensed" *ngIf="flights.length > 0">
@@ -43,8 +51,8 @@
     </thead>
     <tr *ngFor="let f of flights" [class.active]="f === selectedFlight">
       <td>{{f.id}}</td>
-      <td>{{f.from}}</td>
-      <td>{{f.to }}</td>
+      <td>{{f.from | city:'short'}}</td>
+      <td>{{f.to | city:'long' }}</td>
       <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
       <td>
         <a (click)="select(f)">Select</a> |
@@ -53,10 +61,11 @@
   </table>
 
 </div>
+-->
 
 
 <div class="card">
   <div class="content">
-    <pre>{{ selectedFlight | json }}</pre>
+    <pre>{{ basket | json }}</pre>
   </div>
 </div>
